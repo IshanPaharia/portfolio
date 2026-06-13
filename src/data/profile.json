@@ -1,0 +1,189 @@
+{
+  "personal": {
+    "name": "Ishan Paharia",
+    "nickname": "Ishan",
+    "role": "Full-Stack Developer",
+    "status": "Open to new opportunities",
+    "headline": "I build systems that make products feel clear, fast, and finished.",
+    "email": "ishanpaharia@gmail.com",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&h=256&q=80",
+    "socials": {
+      "twitter": "https://x.com/salaheddine_ab",
+      "github": "https://github.com/salaheddine-ab",
+      "linkedin": "https://linkedin.com/in/salaheddine-ab"
+    }
+  },
+  "about": [
+    "I'm a front-end developer with 5 years of experience building production-grade digital products with React, Next.js, and JavaScript. My first name is Salah Eddine. If it's easier, you can call me Eddy.",
+    "I care about interfaces that feel polished on the surface and stay reliable underneath, with a strong focus on performance, maintainability, and consistency as products grow.",
+    "My work spans product UI, reusable component systems, and frontend architecture, with close attention to accessibility and detail. I enjoy turning complex ideas into experiences that feel clear, fast, and natural for users.",
+    "I'm currently working at Eye4Media, and previously contributed to digital products through Eddy Tech and Engagia."
+  ],
+  "projects": [
+    {
+      "id": "asklo",
+      "title": "Asklo",
+      "year": "2025 - Present",
+      "description": "Collaborative QA platform for modern software development teams.",
+      "details": [
+        "Architected real-time message syncing reducing network payload overhead by 40%.",
+        "Designed and implemented custom rich-text code editor with syntax highlighting.",
+        "Built responsive UI supporting both nested threading and horizontal workspace layouts."
+      ],
+      "link": "https://asklo.dev",
+      "tech": ["Next.js", "Tailwind CSS", "Socket.io", "PostgreSQL"]
+    },
+    {
+      "id": "mono-ui",
+      "title": "Mono UI",
+      "year": "2025 - Present",
+      "description": "Minimalist, accessible component library optimized for rapid prototyping.",
+      "details": [
+        "Compiled 40+ lightweight React components compliant with WAI-ARIA guidelines.",
+        "Reduced bundle size by 35% using tree-shaking and ES modules distribution.",
+        "Integrated CSS-in-JS design tokens supporting fluid scale-based system."
+      ],
+      "link": "https://monoui.design",
+      "tech": ["React", "Tailwind CSS", "Radix UI", "Vite"]
+    },
+    {
+      "id": "noteed",
+      "title": "Noteed",
+      "year": "2024 - Present",
+      "description": "Markdown note-taking application with offline-first synchronization.",
+      "details": [
+        "Integrated IndexedDB (via Dexie.js) for robust client-side storage.",
+        "Programmed service workers enabling offline editing and conflict resolution.",
+        "Implemented markdown parser with customizable keybind presets."
+      ],
+      "link": "https://noteed.app",
+      "tech": ["React", "IndexedDB", "Tailwind CSS", "Vite"]
+    },
+    {
+      "id": "home-finder",
+      "title": "Home Finder",
+      "year": "2023 - Present",
+      "description": "Real estate listing matching engine with spatial map queries.",
+      "details": [
+        "Mapped geocoding queries with Mapbox GL to show neighborhood boundaries.",
+        "Created custom filter hook returning search matches within 5ms on 10k items.",
+        "Constructed fluid search layouts with collapsible criteria options."
+      ],
+      "link": "https://homefinder.com",
+      "tech": ["Next.js", "Mapbox GL", "Tailwind CSS", "Express"]
+    }
+  ],
+  "experience": [
+    {
+      "id": "eye4media",
+      "company": "Eye4Media",
+      "role": "Front-End Developer",
+      "type": "Full-time",
+      "duration": "09.2023 - Present",
+      "current": true,
+      "bullets": [
+        "Built and maintained production web platforms with React and Next.js, improving performance and reducing load times by 40-50%.",
+        "Translated product requirements into responsive, accessible interfaces with stronger mobile usability and retention.",
+        "Integrated backend services, third-party APIs, and internal workflows to reduce manual operations and speed up feature delivery.",
+        "Worked closely with design, product, and stakeholders to ship reliable releases with a strong focus on quality and user experience."
+      ],
+      "tech": ["React", "Next.js", "JavaScript", "Tailwind CSS", "Accessibility", "API Integration"]
+    },
+    {
+      "id": "eddy-tech",
+      "company": "Eddy Tech",
+      "role": "Full-Stack Developer",
+      "type": "Self-employed",
+      "duration": "11.2019 - 08.2023",
+      "current": false,
+      "bullets": [
+        "Consulted with startup clients to build greenfield web products and MVPs.",
+        "Optimized SEO performance and core web vitals, raising Lighthouse scores to 95+.",
+        "Engineered scalable Node.js REST APIs and integrated them into frontend panels."
+      ],
+      "tech": ["React", "Node.js", "JavaScript", "Tailwind CSS", "SEO", "Design Systems", "CI/CD"]
+    },
+    {
+      "id": "engagia",
+      "company": "Engagia",
+      "role": "Full-Stack Developer",
+      "type": "Full-time",
+      "duration": "05.2019 - 10.2019",
+      "current": false,
+      "bullets": [
+        "Maintained client-facing dashboards, resolving interface bugs and layout issues.",
+        "Refactored legacy vanilla CSS stylesheets to reusable utility structures.",
+        "Participated in agile sprints, daily standups, and peer code reviews."
+      ],
+      "tech": ["Responsive Design", "Refactoring", "Code Review", "Scalability"]
+    }
+  ],
+  "stack": [
+    { "name": "React", "category": "Frontend", "icon": "SiReact", "color": "#61DAFB" },
+    { "name": "Next.js", "category": "Frontend", "icon": "SiNextdotjs", "color": "#FFFFFF" },
+    { "name": "JavaScript", "category": "Languages", "icon": "SiJavascript", "color": "#F7DF1E" },
+    { "name": "HTML5", "category": "Frontend", "icon": "SiHtml5", "color": "#E34F26" },
+    { "name": "CSS3", "category": "Frontend", "icon": "SiCss", "color": "#1572B6" },
+    { "name": "Tailwind CSS", "category": "Frontend", "icon": "SiTailwindcss", "color": "#06B6D4" },
+    { "name": "Node.js", "category": "Backend", "icon": "SiNodedotjs", "color": "#339933" },
+    { "name": "Vite", "category": "Utilities", "icon": "SiVite", "color": "#646CFF" },
+    { "name": "PostgreSQL", "category": "Database", "icon": "SiPostgresql", "color": "#4169E1" },
+    { "name": "Figma", "category": "Design", "icon": "SiFigma", "color": "#F24E1E" },
+    { "name": "Git", "category": "Utilities", "icon": "SiGit", "color": "#F05032" },
+    { "name": "Postman", "category": "Utilities", "icon": "SiPostman", "color": "#FF6C37" }
+  ],
+  "interests": [
+    {
+      "title": "Usability & Product Design",
+      "description": "Revisiting classic user experience patterns to design software that feels invisible and natural to use.",
+      "metric": "Reading: The Design of Everyday Things"
+    },
+    {
+      "title": "Creative Coding & Micro-interactions",
+      "description": "Exploring canvas rendering, hardware-accelerated animations, and physical UI states.",
+      "metric": "Learning: Framer Motion physics"
+    },
+    {
+      "title": "Open Source Contributions",
+      "description": "Publishing accessible headless React hooks and utility functions for developer tools.",
+      "metric": "Status: Active on GitHub"
+    }
+  ],
+  "chatDatabase": [
+    {
+      "triggers": ["name", "who are you", "introduce yourself", "identity"],
+      "question": "What is your name?",
+      "answer": "My name is Salah Eddine A. (though you can call me Eddy). I am a Front-End Developer who builds clean, fast, and polished web systems."
+    },
+    {
+      "triggers": ["projects", "work", "portfolio", "build", "show me your projects", "apps"],
+      "question": "Show me your projects",
+      "answer": "Here are some of the main products I have designed and built. I specialize in high-performance React and Next.js applications.",
+      "action": "RENDER_PROJECTS"
+    },
+    {
+      "triggers": ["skills", "tech", "technologies", "stack", "what do you know", "languages"],
+      "question": "What is your tech stack?",
+      "answer": "I work with a variety of frontend and backend technologies, centering around React, Next.js, and modern CSS frameworks like Tailwind CSS.",
+      "action": "RENDER_STACK"
+    },
+    {
+      "triggers": ["experience", "job", "career", "work history", "resume"],
+      "question": "Tell me about your experience",
+      "answer": "I have 5 years of professional experience. I'm currently working at Eye4Media as a Front-End Developer. Here is my recent career history.",
+      "action": "RENDER_EXPERIENCE"
+    },
+    {
+      "triggers": ["contact", "email", "reach out", "hire", "message", "socials"],
+      "question": "How can I contact you?",
+      "answer": "You can reach out to me directly via email or check my social profiles. Click any button below to connect!",
+      "action": "RENDER_CONTACT"
+    },
+    {
+      "triggers": ["interests", "learning", "hobbies", "reading"],
+      "question": "What are your current interests?",
+      "answer": "I'm always learning new things. Here is what I am currently focusing on or reading.",
+      "action": "RENDER_INTERESTS"
+    }
+  ]
+}
