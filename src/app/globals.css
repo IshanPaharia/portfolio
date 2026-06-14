@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  font-size: 17px !important;
+}
+
 @theme {
   --color-brand-cyan: #00f2fe;
   --color-brand-violet: #8a2be2;

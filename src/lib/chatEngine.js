@@ -4,8 +4,8 @@ import profileData from "../data/profile.json";
 // Pre-tuned Fuse.js configuration for optimal keyword/alias matching.
 // Threshold 0.35 provides a balanced matching range (not too strict, not too fuzzy).
 const fuseOptions = {
-  keys: ["triggers"],
-  threshold: 0.35, 
+  keys: ["triggers", "question"],
+  threshold: 0.4, 
   includeScore: true,
 };
 

@@ -17,8 +17,9 @@ const outfit = Outfit({
 });
 
 export const metadata = {
-  title: "Ishan Paharia",
-  description: "Full-Stack Developer",
+  title: "Ishan Paharia | Systems & Backend Engineer",
+  description: "Personal portfolio of Ishan Paharia, a Computer Science student at LNMIIT Jaipur specializing in backend systems design, WebSocket infrastructure, caching architectures, and real-time full-stack applications.",
+  keywords: ["Ishan Paharia", "Backend Developer", "Systems Design", "Software Engineer Portfolio", "LNMIIT", "LNMIIT Jaipur", "Competitive Programming"],
 };
 
 export const viewport = {
@@ -31,8 +32,12 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${outfit.variable} h-full antialiased dark`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full bg-black text-zinc-100 font-sans selection:bg-brand-cyan/20 selection:text-brand-cyan">
+      <body
+        className="min-h-full bg-black text-zinc-100 font-sans selection:bg-brand-cyan/20 selection:text-brand-cyan"
+        suppressHydrationWarning
+      >
         {/* Ambient background glow */}
         <div className="fixed inset-0 bg-dot-matrix pointer-events-none z-0" />
         <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[400px] bg-gradient-to-b from-brand-violet/5 via-transparent to-transparent blur-[120px] pointer-events-none z-0" />
