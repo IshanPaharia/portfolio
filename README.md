@@ -1,4 +1,4 @@
-# 🦊 Ishan Paharia
+# <img src="public/logo.png" width="30" height="30" alt="logo" /> Ishan Paharia
 
 > I architect resilient backend systems and pair them with clean, functional frontends.
 
