@@ -2,11 +2,12 @@
   "personal": {
     "name": "Ishan Paharia",
     "nickname": "Ishan",
-    "role": "Backend Developer",
+    "role": "Full-Stack Developer",
     "status": "Open to internships & full-time opportunities",
     "headline": "I architect resilient backend systems and pair them with clean, functional frontends.",
     "email": "ishanpaharia@gmail.com",
     "avatar": "/avatar.jpeg",
+    "resume": "/resume.pdf",
     "socials": {
       "twitter": "",
       "github": "https://github.com/IshanPaharia",
@@ -22,7 +23,7 @@
     {
       "id": "pixnette",
       "title": "Pixnette",
-      "year": "2025",
+      "year": "2026",
       "description": "Real-time collaborative pixel canvas with horizontally-scaled WebSocket infrastructure.",
       "details": [
         "Engineered horizontal scaling across 2 Node.js instances behind an Nginx round-robin reverse proxy, sustaining 300 concurrent WebSocket connections on a self-hosted VPS.",
@@ -79,7 +80,7 @@
     {
       "triggers": ["name", "who are you", "introduce yourself", "identity", "about"],
       "question": "What is your name?",
-      "answer": "I'm Ishan Paharia, a final-year Computer Science student at The LNM Institute of Information Technology, Jaipur, and a backend-focused full-stack developer."
+      "answer": "I'm Ishan Paharia, a final-year Computer Science student at The LNM Institute of Information Technology, Jaipur, and a full-stack developer."
     },
     {
       "triggers": ["projects", "work", "portfolio", "build", "show me your projects", "apps"],
@@ -106,15 +107,21 @@
       "action": "RENDER_CONTACT"
     },
     {
-      "triggers": ["interests", "learning", "hobbies", "reading"],
-      "question": "What are your current interests?",
-      "answer": "Outside of building, I spend a lot of time on competitive programming and tinkering on hobby projects, here's what I'm focused on.",
+      "triggers": ["interests", "hobbies", "free time", "fun", "outside of coding"],
+      "question": "What do you do outside of coding?",
+      "answer": "When I'm not coding, I'm usually drawing or painting, playing badminton, watching movies, gaming, or listening to music, here's a bit more on that.",
+      "action": "RENDER_ACTIVITY"
+    },
+    {
+      "triggers": ["learning", "currently learning", "exploring", "side projects"],
+      "question": "What are you currently learning or exploring?",
+      "answer": "I'm mostly heads-down on competitive programming and tinkering with backend-heavy side projects, here's what I'm focused on right now.",
       "action": "RENDER_ACTIVITY"
     },
     {
       "triggers": ["achievements", "competitive programming", "codeforces", "leetcode", "codechef", "ratings"],
       "question": "What are your competitive programming achievements?",
-      "answer": "I have achieved a max rating of 1465 (Specialist) on Codeforces (current rating 1336), 1746 (3-Star Coder) on CodeChef, and a rating of 1853 (Knight) on LeetCode with 200+ problems solved.",
+      "answer": "I actively practice competitive programming and solve problems on Codeforces, LeetCode, and CodeChef.",
       "action": "RENDER_ACTIVITY"
     }
   ]

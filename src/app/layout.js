@@ -17,9 +17,9 @@ const outfit = Outfit({
 });
 
 export const metadata = {
-  title: "Ishan Paharia | Systems & Backend Engineer",
+  title: "Ishan Paharia | Full-Stack Developer",
   description: "Personal portfolio of Ishan Paharia, a Computer Science student at LNMIIT Jaipur specializing in backend systems design, WebSocket infrastructure, caching architectures, and real-time full-stack applications.",
-  keywords: ["Ishan Paharia", "Backend Developer", "Systems Design", "Software Engineer Portfolio", "LNMIIT", "LNMIIT Jaipur", "Competitive Programming"],
+  keywords: ["Ishan Paharia", "Full-Stack Developer", "Systems Design", "Software Engineer Portfolio", "LNMIIT", "LNMIIT Jaipur", "Competitive Programming"],
 };
 
 export const viewport = {

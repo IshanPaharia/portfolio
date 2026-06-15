@@ -27,6 +27,7 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [pendingScrollTarget, setPendingScrollTarget] = useState("");
+  const [initialExpandedProject, setInitialExpandedProject] = useState(null);
   const portfolioRef = useRef(null);
 
   useEffect(() => {
@@ -43,11 +44,14 @@ export default function Home() {
 
   // Scroll and Navigate Bindings:
   // Clicking nav links transitions views and scrolls.
-  const handleNavClick = (sectionId) => {
+  const handleNavClick = (sectionId, projectId) => {
     setMode("portfolio");
     setActiveSection(sectionId);
     setPendingScrollTarget(sectionId);
     setMobileMenuOpen(false);
+    if (projectId) {
+      setInitialExpandedProject(projectId);
+    }
   };
 
   useEffect(() => {
@@ -257,6 +261,7 @@ export default function Home() {
               >
                 <PortfolioView 
                   onSwitchToChat={() => handleModeChange("chat")} 
+                  initialExpandedProject={initialExpandedProject}
                 />
               </motion.div>
             )}

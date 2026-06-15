@@ -61,22 +61,22 @@ export default function StackSection() {
         Stack
       </h2>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 p-6 sm:p-8">
+      <div className="grid grid-cols-2 min-[375px]:grid-cols-3 min-[480px]:grid-cols-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 p-4 sm:p-8">
         {profileData.stack.map((tech) => {
           const Icon = iconComponents[tech.icon];
           return (
             <div
               key={tech.name}
-              className="flex items-center gap-3 p-3 border border-dark-border bg-[#08080a] hover:border-zinc-800 transition-all group hover:bg-[#0e0e11]"
+              className="flex items-center gap-2 p-2 sm:gap-3 sm:p-3 border border-dark-border bg-[#08080a] hover:border-zinc-800 transition-all group hover:bg-[#0e0e11]"
             >
-              <div className="p-2 border border-dark-border bg-black text-zinc-500 group-hover:text-white transition-colors shrink-0">
+              <div className="p-1.5 sm:p-2 border border-dark-border bg-black text-zinc-500 group-hover:text-white transition-colors shrink-0">
                 {Icon ? <Icon className="w-4 h-4" /> : <LuCode className="w-4 h-4" />}
               </div>
               <div className="overflow-hidden">
                 <h4 className="text-[12px] font-semibold text-zinc-200 group-hover:text-white transition-colors truncate">
                   {tech.name}
                 </h4>
-                <span className="text-[10px] text-zinc-550 block mt-0.5 truncate font-mono">{tech.category}</span>
+                <span className="text-[10px] text-zinc-550 hidden sm:block mt-0.5 truncate font-mono">{tech.category}</span>
               </div>
             </div>
           );

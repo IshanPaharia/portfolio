@@ -9,7 +9,7 @@ export default function ChatHeader({ onSwitchToPortfolio }) {
         </div>
         <div>
           <h3 className="text-xs font-semibold text-zinc-200">Portfolio Assistant</h3>
-          <p className="text-[9px] text-zinc-650 font-mono">Offline FAQ engine</p>
+          <p className="text-[9px] text-zinc-650 font-mono">{"Not just another LLM API wrapper — it's a fuzzy-logic Q&A agent"}</p>
         </div>
       </div>
 

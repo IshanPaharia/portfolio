@@ -1,4 +1,13 @@
+import { useRef, useEffect } from "react";
+
 export default function ActivitySection({ stats }) {
+  const scrollContainerRef = useRef(null);
+
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollLeft = scrollContainerRef.current.scrollWidth;
+    }
+  }, [stats]);
   return (
     <section id="activity" className="scroll-mt-20">
       <h2 className="text-2xl font-mono font-bold text-zinc-500 uppercase tracking-widest border-y border-dark-border py-3 pl-4 bg-[#08080a]/30">
@@ -13,7 +22,7 @@ export default function ActivitySection({ stats }) {
             <p className="text-lg font-semibold text-white mt-1 font-mono">{stats.totalCommits}</p>
           </div>
           <div>
-            <span className="text-[11px] text-zinc-500 uppercase tracking-widest font-mono">CP / DSA Solved</span>
+            <span className="text-[11px] text-zinc-500 uppercase tracking-widest font-mono">Problems Solved</span>
             <p className="text-lg font-semibold text-white mt-1 font-mono">{stats.totalCP}</p>
           </div>
           <div>
@@ -42,10 +51,15 @@ export default function ActivitySection({ stats }) {
           </div>
 
           {/* Scrollable grid wrapper */}
-          <div className="overflow-x-auto pt-5 pb-5 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent">
+          <div 
+            ref={scrollContainerRef}
+            className="overflow-x-auto pt-10 pb-16 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent"
+          >
             <div className="min-w-[800px] select-none">
               {/* Month Labels */}
               <div className="flex h-4 relative mb-1 text-[10px] text-zinc-500 font-mono">
+                {/* Sticky mask to hide month labels when they scroll past the day line */}
+                <div className="sticky left-0 h-full w-[24px] bg-[#08080a] z-10 shrink-0" />
                 {stats.monthLabels.map((ml, idx) => (
                   <span
                     key={idx}
@@ -59,7 +73,7 @@ export default function ActivitySection({ stats }) {
 
               <div className="flex gap-[3px]">
                 {/* Weekday Labels */}
-                <div className="flex flex-col justify-between text-[10px] text-zinc-500 font-mono pr-2 h-[102px] w-5 leading-none pt-[2px] pb-[4px]">
+                <div className="sticky left-0 bg-[#08080a] flex flex-col justify-between text-[10px] text-zinc-500 font-mono pr-2 h-[102px] w-5 leading-none pt-[2px] pb-[4px] z-10">
                   <span>Sun</span>
                   <span>Tue</span>
                   <span>Thu</span>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import profileData from "@/data/profile.json";
 import Image from "next/image";
 import liveCalendarData from "@/data/live_calendar.json";
@@ -92,10 +92,19 @@ const generateCalendarData = () => {
   return data;
 };
 
-export default function PortfolioView({ onSwitchToChat }) {
-  const [expandedProject, setExpandedProject] = useState(null);
+export default function PortfolioView({ onSwitchToChat, initialExpandedProject }) {
+  const [expandedProject, setExpandedProject] = useState(
+    initialExpandedProject || profileData.projects[0]?.id || null
+  );
   const [expandedExperience, setExpandedExperience] = useState(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
+
+  // Sync expanded project when requested from the parent (e.g. Chat experience)
+  useEffect(() => {
+    if (initialExpandedProject) {
+      setExpandedProject(initialExpandedProject);
+    }
+  }, [initialExpandedProject]);
 
   // Compute contribution calendar data and statistics
   const stats = useMemo(() => {

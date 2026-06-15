@@ -41,7 +41,7 @@ export default function ChatPayloads({
                 ))}
               </div>
               <button 
-                onClick={() => onNavigateToSection("projects")}
+                onClick={() => onNavigateToSection("projects", proj.id)}
                 className="text-[11px] text-brand-cyan hover:underline mt-2.5 flex items-center gap-1 cursor-pointer font-mono"
               >
                 View Details &rarr;
