@@ -9,11 +9,13 @@ import PortfolioView from "@/components/PortfolioView";
 import profileData from "@/data/profile.json";
 import logoImg from "../../public/logo.png";
 
+const hasExperience = profileData.experience && profileData.experience.length > 0;
+
 // Central pill navigation items (matches saddine.com layout exactly)
 const navItems = [
   { label: "About", id: "about" },
   { label: "Projects", id: "projects" },
-  { label: "Experience", id: "experience" },
+  ...(hasExperience ? [{ label: "Experience", id: "experience" }] : []),
   { label: "Stack", id: "stack" },
   { label: "Connect", id: "connect" }
 ];
@@ -67,32 +69,7 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, [mode, pendingScrollTarget]);
 
-  // Setup intersection observer to highlight active navigation link based on scroll position
-  useEffect(() => {
-    if (mode !== "portfolio") return;
-
-    const observerOptions = {
-      root: null,
-      rootMargin: "-25% 0px -55% 0px",
-      threshold: 0,
-    };
-
-    const handleIntersection = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(handleIntersection, observerOptions);
-    navItems.forEach((item) => {
-      const element = document.getElementById(item.id);
-      if (element) observer.observe(element);
-    });
-
-    return () => observer.disconnect();
-  }, [mode]);
+  // Local intersection observer is now managed in PortfolioView.jsx to ensure DOM elements are fully mounted.
 
   const isChat = mode === "chat";
 
@@ -131,7 +108,7 @@ export default function Home() {
         
         {/* Header matching saddine.com layout (Logo left, pill center, switcher right) */}
         <header className="sticky top-0 z-50 w-full flex flex-col bg-black/60 backdrop-blur-md border-b border-dark-border shrink-0">
-          <div className="w-full flex items-center justify-between px-6 py-4">
+          <div className="relative w-full flex items-center justify-between px-6 py-4">
             {/* Logo (Nine-Tailed Fox emblem SVG) */}
             <button 
               onClick={() => handleModeChange("chat")}
@@ -142,7 +119,7 @@ export default function Home() {
             </button>
 
             {/* Centered Pill Navigation Container (Section links) - Hidden on Mobile */}
-            <div className="hidden md:flex bg-[#0c0c0e]/80 p-1 rounded-full border border-dark-border/85 shadow-inner">
+            <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 bg-[#0c0c0e]/80 p-1 rounded-full border border-dark-border/85 shadow-inner">
               {navItems.map((item) => {
                 const isActive = mode === "portfolio" && activeSection === item.id;
                 
@@ -150,7 +127,7 @@ export default function Home() {
                   <button
                     key={item.id}
                     onClick={() => handleNavClick(item.id)}
-                    className={`text-[11px] font-sans transition-all duration-200 px-3.5 py-1.5 rounded-full cursor-pointer ${
+                    className={`text-[13px] font-sans transition-all duration-200 px-3.5 py-1.5 rounded-full cursor-pointer ${
                       isActive
                         ? "bg-[#18181b] text-white font-semibold shadow-sm"
                         : "text-zinc-400 hover:text-zinc-200"
@@ -167,7 +144,7 @@ export default function Home() {
               <div className="flex bg-[#0c0c0e] p-0.5 rounded-full border border-dark-border shrink-0">
                 <button
                   onClick={() => handleModeChange("chat")}
-                  className={`text-[10px] font-sans font-medium px-2.5 py-1 rounded-full transition-all duration-300 cursor-pointer ${
+                  className={`text-[12px] font-sans font-medium px-2.5 py-1 rounded-full transition-all duration-300 cursor-pointer ${
                     mode === "chat"
                       ? "bg-[#18181b] text-brand-cyan font-semibold"
                       : "text-zinc-500 hover:text-zinc-350"
@@ -177,7 +154,7 @@ export default function Home() {
                 </button>
                 <button
                   onClick={() => handleModeChange("portfolio")}
-                  className={`text-[10px] font-sans font-medium px-2.5 py-1 rounded-full transition-all duration-300 cursor-pointer ${
+                  className={`text-[12px] font-sans font-medium px-2.5 py-1 rounded-full transition-all duration-300 cursor-pointer ${
                     mode === "portfolio"
                       ? "bg-[#18181b] text-white font-semibold"
                       : "text-zinc-500 hover:text-zinc-355"
@@ -262,6 +239,8 @@ export default function Home() {
                 <PortfolioView 
                   onSwitchToChat={() => handleModeChange("chat")} 
                   initialExpandedProject={initialExpandedProject}
+                  activeSection={activeSection}
+                  onSectionChange={setActiveSection}
                 />
               </motion.div>
             )}

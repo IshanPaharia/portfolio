@@ -27,7 +27,7 @@ export default function ProjectsSection({ expandedProject, toggleProject }) {
                     <h3 className="text-xs font-semibold text-zinc-200 group-hover:text-white transition-colors">
                       {proj.title}
                     </h3>
-                    <span className="text-[11px] text-zinc-600 font-mono mt-0.5 block">{proj.year}</span>
+                    <span className="text-[13px] text-zinc-600 font-mono mt-0.5 block">{proj.year}</span>
                   </div>
                 </div>
 
@@ -56,7 +56,7 @@ export default function ProjectsSection({ expandedProject, toggleProject }) {
               {isExpanded && (
                 <div className="px-4 pb-5 pt-2 bg-black/60 border-t border-dark-border/40 text-xs text-zinc-400 space-y-4">
                   <p className="leading-relaxed">{proj.description}</p>
-                  <ul className="list-disc pl-4 space-y-2 text-[12px] text-zinc-400">
+                  <ul className="list-disc pl-4 space-y-2 text-[14px] text-zinc-400">
                     {proj.details.map((detail, index) => (
                       <li key={index} className="leading-relaxed">{detail}</li>
                     ))}
@@ -65,7 +65,7 @@ export default function ProjectsSection({ expandedProject, toggleProject }) {
                     {proj.tech.map((t) => (
                       <span 
                         key={t} 
-                        className="text-[11px] bg-black border border-dark-border text-zinc-400 px-2 py-0.5 font-mono"
+                        className="text-[13px] bg-black border border-dark-border text-zinc-400 px-2 py-0.5 font-mono"
                       >
                         {t}
                       </span>

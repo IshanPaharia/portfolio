@@ -18,7 +18,7 @@ export default function ChatInput({
             <button
               key={idx}
               onClick={() => handleSend(chip.query)}
-              className="text-[10px] text-zinc-400 hover:text-brand-cyan hover:border-brand-cyan/25 border border-dark-border bg-black px-3 py-1.5 rounded-none whitespace-nowrap transition-all cursor-pointer font-mono"
+              className="text-[12px] text-zinc-400 hover:text-brand-cyan hover:border-brand-cyan/25 border border-dark-border bg-black px-3 py-1.5 rounded-none whitespace-nowrap transition-all cursor-pointer font-mono"
             >
               {chip.label}
             </button>

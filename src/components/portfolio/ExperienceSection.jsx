@@ -38,17 +38,17 @@ export default function ExperienceSection({ expandedExperience, toggleExperience
                     <h3 className="text-xs font-semibold text-zinc-200 group-hover:text-white transition-colors flex items-center gap-1.5">
                       {exp.company}
                       {exp.current && (
-                        <span className="text-[10px] bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 px-1.5 py-0.2 rounded font-mono">
+                        <span className="text-[12px] bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 px-1.5 py-0.2 rounded font-mono">
                           Current
                         </span>
                       )}
                     </h3>
-                    <p className="text-[11px] text-zinc-500 mt-0.5">{exp.role} • {exp.type}</p>
+                    <p className="text-[13px] text-zinc-500 mt-0.5">{exp.role} • {exp.type}</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3 text-zinc-500">
-                  <span className="text-[11px] text-zinc-600 font-mono">{exp.duration}</span>
+                  <span className="text-[13px] text-zinc-600 font-mono">{exp.duration}</span>
                   {isExpanded ? (
                     <LuChevronUp className="w-3.5 h-3.5 text-zinc-400" />
                   ) : (
@@ -60,7 +60,7 @@ export default function ExperienceSection({ expandedExperience, toggleExperience
               {/* Collapsible details */}
               {isExpanded && (
                 <div className="px-4 pb-5 pt-2 bg-black/60 border-t border-dark-border/40 text-xs text-zinc-400 space-y-4">
-                  <ul className="list-disc pl-4 space-y-2 text-[12px] text-zinc-400">
+                  <ul className="list-disc pl-4 space-y-2 text-[14px] text-zinc-400">
                     {exp.bullets.map((bullet, index) => (
                       <li key={index} className="leading-relaxed">{bullet}</li>
                     ))}
@@ -69,7 +69,7 @@ export default function ExperienceSection({ expandedExperience, toggleExperience
                     {exp.tech.map((t) => (
                       <span 
                         key={t} 
-                        className="text-[11px] bg-black border border-dark-border text-zinc-400 px-2 py-0.5 font-mono"
+                        className="text-[13px] bg-black border border-dark-border text-zinc-400 px-2 py-0.5 font-mono"
                       >
                         {t}
                       </span>

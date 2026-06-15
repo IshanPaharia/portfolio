@@ -92,12 +92,47 @@ const generateCalendarData = () => {
   return data;
 };
 
-export default function PortfolioView({ onSwitchToChat, initialExpandedProject }) {
+export default function PortfolioView({ onSwitchToChat, initialExpandedProject, activeSection, onSectionChange }) {
   const [expandedProject, setExpandedProject] = useState(
     initialExpandedProject || profileData.projects[0]?.id || null
   );
   const [expandedExperience, setExpandedExperience] = useState(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
+
+  const hasExperience = profileData.experience && profileData.experience.length > 0;
+
+  // Local intersection observer to sync scroll with navbar active section
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "-25% 0px -55% 0px",
+      threshold: 0,
+    };
+
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          onSectionChange?.(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+    const targetSections = [
+      "about",
+      "projects",
+      ...(hasExperience ? ["experience"] : []),
+      "stack",
+      "connect"
+    ];
+
+    targetSections.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [onSectionChange, hasExperience]);
 
   // Sync expanded project when requested from the parent (e.g. Chat experience)
   useEffect(() => {
@@ -267,8 +302,6 @@ export default function PortfolioView({ onSwitchToChat, initialExpandedProject }
     }, 2000);
   };
 
-  const hasExperience = profileData.experience && profileData.experience.length > 0;
-
   return (
     <div className="flex flex-col">
       {/* Intro Section - Bounded & Boxy */}
@@ -282,11 +315,15 @@ export default function PortfolioView({ onSwitchToChat, initialExpandedProject }
       />
 
       {/* Experience Section */}
-      <div className="bg-stripes" />
-      <ExperienceSection 
-        expandedExperience={expandedExperience} 
-        toggleExperience={toggleExperience} 
-      />
+      {hasExperience && (
+        <>
+          <div className="bg-stripes" />
+          <ExperienceSection 
+            expandedExperience={expandedExperience} 
+            toggleExperience={toggleExperience} 
+          />
+        </>
+      )}
 
       {/* Stack Section */}
       <div className="bg-stripes" />

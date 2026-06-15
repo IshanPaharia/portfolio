@@ -73,10 +73,10 @@ export default function StackSection() {
                 {Icon ? <Icon className="w-4 h-4" /> : <LuCode className="w-4 h-4" />}
               </div>
               <div className="overflow-hidden">
-                <h4 className="text-[12px] font-semibold text-zinc-200 group-hover:text-white transition-colors truncate">
+                <h4 className="text-[14px] font-semibold text-zinc-200 group-hover:text-white transition-colors truncate">
                   {tech.name}
                 </h4>
-                <span className="text-[10px] text-zinc-550 hidden sm:block mt-0.5 truncate font-mono">{tech.category}</span>
+                <span className="text-[12px] text-zinc-550 hidden sm:block mt-0.5 truncate font-mono">{tech.category}</span>
               </div>
             </div>
           );

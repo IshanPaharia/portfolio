@@ -49,6 +49,7 @@
       "tech": ["React", "Tailwind CSS", "Node.js", "Express", "PostgreSQL", "Clerk"]
     }
   ],
+  "_experience_note": "Note: When you add experience items to the 'experience' array, please also update the 'chatDatabase' array below (specifically under trigger: experience/job/internship/career) so that the AI Chat assistant responds with the updated details.",
   "experience": [],
   "stack": [
     { "name": "Python", "category": "Languages", "icon": "SiPython", "color": "#3776AB" },

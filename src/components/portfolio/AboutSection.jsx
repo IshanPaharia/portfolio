@@ -30,7 +30,7 @@ export default function AboutSection() {
 
           <div className="text-center sm:text-left space-y-2.5">
             <div className="flex items-center justify-center sm:justify-start gap-2">
-              <span className="text-[11px] text-brand-cyan uppercase font-bold tracking-widest font-mono">
+              <span className="text-[13px] text-brand-cyan uppercase font-bold tracking-widest font-mono">
                 {profileData.personal.role}
               </span>
             </div>
@@ -40,7 +40,7 @@ export default function AboutSection() {
             <p className="text-xs text-zinc-400 leading-relaxed max-w-lg">
               {profileData.personal.headline}
             </p>
-            <span className="text-[10px] bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 px-2 py-0.5 rounded font-mono">
+            <span className="text-[12px] bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 px-2 py-0.5 rounded font-mono">
               {profileData.personal.status}
             </span>
           </div>

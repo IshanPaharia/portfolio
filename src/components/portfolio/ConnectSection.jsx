@@ -18,7 +18,7 @@ export default function ConnectSection({ copiedEmail, handleCopyEmail }) {
               href={profileData.personal.socials.twitter}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-1.5 py-3 border border-dark-border bg-[#08080a] hover:bg-zinc-950 hover:text-white text-[12px] font-semibold text-zinc-400 transition-colors"
+              className="flex items-center justify-center gap-1.5 py-3 border border-dark-border bg-[#08080a] hover:bg-zinc-950 hover:text-white text-[14px] font-semibold text-zinc-400 transition-colors"
             >
               Twitter <LuArrowUpRight className="w-3 h-3 text-zinc-600" />
             </a>
@@ -27,7 +27,7 @@ export default function ConnectSection({ copiedEmail, handleCopyEmail }) {
             href={profileData.personal.socials.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-1.5 py-3 border border-dark-border bg-[#08080a] hover:bg-zinc-950 hover:text-white text-[12px] font-semibold text-zinc-400 transition-colors"
+            className="flex items-center justify-center gap-1.5 py-3 border border-dark-border bg-[#08080a] hover:bg-zinc-950 hover:text-white text-[14px] font-semibold text-zinc-400 transition-colors"
           >
             GitHub <LuArrowUpRight className="w-3 h-3 text-zinc-600" />
           </a>
@@ -35,7 +35,7 @@ export default function ConnectSection({ copiedEmail, handleCopyEmail }) {
             href={profileData.personal.socials.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-1.5 py-3 border border-dark-border bg-[#08080a] hover:bg-zinc-950 hover:text-white text-[12px] font-semibold text-zinc-400 transition-colors"
+            className="flex items-center justify-center gap-1.5 py-3 border border-dark-border bg-[#08080a] hover:bg-zinc-950 hover:text-white text-[14px] font-semibold text-zinc-400 transition-colors"
           >
             LinkedIn <LuArrowUpRight className="w-3 h-3 text-zinc-600" />
           </a>
@@ -46,11 +46,11 @@ export default function ConnectSection({ copiedEmail, handleCopyEmail }) {
           <div className="absolute top-0 right-0 w-32 h-32 bg-brand-cyan/5 rounded-full blur-2xl pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-32 h-32 bg-brand-violet/5 rounded-full blur-2xl pointer-events-none" />
 
-          <span className="text-[11px] text-zinc-500 uppercase tracking-widest font-mono">Contact</span>
+          <span className="text-[13px] text-zinc-500 uppercase tracking-widest font-mono">Contact</span>
           <h3 className="text-xl font-display font-medium text-white max-w-md tracking-tight leading-snug">
             {"Let's build something solid."}
           </h3>
-          <p className="text-[12px] text-zinc-400 max-w-sm">
+          <p className="text-[14px] text-zinc-400 max-w-sm">
             If you have a product, role, or idea in mind, feel free to reach out. Copy the email to get in touch!
           </p>
 

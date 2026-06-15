@@ -18,28 +18,28 @@ export default function ActivitySection({ stats }) {
         {/* Calendar Stats Board */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 border border-dark-border bg-[#08080a] p-4 text-center">
           <div>
-            <span className="text-[11px] text-zinc-500 uppercase tracking-widest font-mono">Total Commits</span>
+            <span className="text-[13px] text-zinc-500 uppercase tracking-widest font-mono">Total Commits</span>
             <p className="text-lg font-semibold text-white mt-1 font-mono">{stats.totalCommits}</p>
           </div>
           <div>
-            <span className="text-[11px] text-zinc-500 uppercase tracking-widest font-mono">Problems Solved</span>
+            <span className="text-[13px] text-zinc-500 uppercase tracking-widest font-mono">Problems Solved</span>
             <p className="text-lg font-semibold text-white mt-1 font-mono">{stats.totalCP}</p>
           </div>
           <div>
-            <span className="text-[11px] text-zinc-500 uppercase tracking-widest font-mono">Current Streak</span>
+            <span className="text-[13px] text-zinc-500 uppercase tracking-widest font-mono">Current Streak</span>
             <p className="text-lg font-semibold text-brand-cyan mt-1 font-mono">{stats.currentStreak} days</p>
           </div>
           <div>
-            <span className="text-[11px] text-zinc-500 uppercase tracking-widest font-mono">Max Streak</span>
+            <span className="text-[13px] text-zinc-500 uppercase tracking-widest font-mono">Max Streak</span>
             <p className="text-lg font-semibold text-brand-violet mt-1 font-mono">{stats.maxStreak} days</p>
           </div>
         </div>
 
         {/* Grid Container */}
         <div className="border border-dark-border bg-[#08080a] p-5 relative overflow-hidden">
-          <div className="text-[11px] text-zinc-400 font-mono mb-4 flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-center">
+          <div className="text-[13px] text-zinc-400 font-mono mb-4 flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-center">
             <span>{stats.isLive ? "Live" : "Demo"} Activity Map (Last 12 Months)</span>
-            <div className="flex items-center gap-1.5 text-[10px] text-zinc-500 self-start sm:self-auto">
+            <div className="flex items-center gap-1.5 text-[12px] text-zinc-500 self-start sm:self-auto">
               <span>Less</span>
               <span className="w-2.5 h-2.5 bg-zinc-900/60 border border-zinc-950 rounded-[1.5px]" title="No activity" />
               <span className="w-2.5 h-2.5 bg-emerald-500/15 border border-emerald-500/5 rounded-[1.5px]" title="Level 1" />
@@ -55,9 +55,9 @@ export default function ActivitySection({ stats }) {
             ref={scrollContainerRef}
             className="overflow-x-auto pt-10 pb-16 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent"
           >
-            <div className="min-w-[800px] select-none">
+            <div className="w-[816px] mx-auto select-none">
               {/* Month Labels */}
-              <div className="flex h-4 relative mb-1 text-[10px] text-zinc-500 font-mono">
+              <div className="flex h-4 relative mb-1 text-[12px] text-zinc-500 font-mono">
                 {/* Sticky mask to hide month labels when they scroll past the day line */}
                 <div className="sticky left-0 h-full w-[24px] bg-[#08080a] z-10 shrink-0" />
                 {stats.monthLabels.map((ml, idx) => (
@@ -71,13 +71,16 @@ export default function ActivitySection({ stats }) {
                 ))}
               </div>
 
-              <div className="flex gap-[3px]">
+              <div className="flex">
                 {/* Weekday Labels */}
-                <div className="sticky left-0 bg-[#08080a] flex flex-col justify-between text-[10px] text-zinc-500 font-mono pr-2 h-[102px] w-5 leading-none pt-[2px] pb-[4px] z-10">
-                  <span>Sun</span>
-                  <span>Tue</span>
-                  <span>Thu</span>
-                  <span>Sat</span>
+                <div className="sticky left-0 bg-[#08080a] flex flex-col gap-[3px] text-[11px] text-zinc-500 font-mono text-right w-[24px] pr-[3px] shrink-0 z-10 select-none">
+                  <span className="h-[12px] flex items-center justify-end leading-none">Sun</span>
+                  <span className="h-[12px] invisible leading-none">Mon</span>
+                  <span className="h-[12px] flex items-center justify-end leading-none">Tue</span>
+                  <span className="h-[12px] invisible leading-none">Wed</span>
+                  <span className="h-[12px] flex items-center justify-end leading-none">Thu</span>
+                  <span className="h-[12px] invisible leading-none">Fri</span>
+                  <span className="h-[12px] flex items-center justify-end leading-none">Sat</span>
                 </div>
 
                 {/* Weeks Columns */}
@@ -105,7 +108,7 @@ export default function ActivitySection({ stats }) {
                           >
                             {/* Hover Tooltip card */}
                             {!day.isFuture && (
-                              <div className={`absolute hidden group-hover:block z-50 w-48 bg-zinc-950 border border-dark-border text-zinc-200 text-[10px] p-2 shadow-xl rounded pointer-events-none col-span-1 ${dIdx < 3 ? "top-full mt-2" : "bottom-full mb-2"} ${wIdx < 8 ? "left-0 translate-x-0" : wIdx > 44 ? "right-0 translate-x-0" : "left-1/2 -translate-x-1/2"}`}>
+                              <div className={`absolute hidden group-hover:block z-50 w-48 bg-zinc-950 border border-dark-border text-zinc-200 text-[12px] p-2 shadow-xl rounded pointer-events-none col-span-1 ${dIdx < 3 ? "top-full mt-2" : "bottom-full mb-2"} ${wIdx < 8 ? "left-0 translate-x-0" : wIdx > 44 ? "right-0 translate-x-0" : "left-1/2 -translate-x-1/2"}`}>
                                 <div className="font-semibold border-b border-dark-border/40 pb-1 mb-1 text-zinc-300">
                                   {day.date.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}
                                 </div>
@@ -142,7 +145,7 @@ export default function ActivitySection({ stats }) {
           </div>
           
           {/* Stage description legend / notes */}
-          <div className="mt-4 pt-3 border-t border-dark-border/40 text-[11px] text-zinc-500 leading-relaxed space-y-1">
+          <div className="mt-4 pt-3 border-t border-dark-border/40 text-[13px] text-zinc-500 leading-relaxed space-y-1">
             <p>
               Grid intensity colors represent combined daily activity volume (GitHub commits + CP/DSA platform submissions).
             </p>

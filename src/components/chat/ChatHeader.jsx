@@ -9,13 +9,13 @@ export default function ChatHeader({ onSwitchToPortfolio }) {
         </div>
         <div>
           <h3 className="text-xs font-semibold text-zinc-200">Portfolio Assistant</h3>
-          <p className="text-[9px] text-zinc-650 font-mono">{"Not just another LLM API wrapper — it's a fuzzy-logic Q&A agent"}</p>
+          <p className="text-[11px] text-zinc-650 font-mono">{"Not just another LLM API wrapper — it's a fuzzy-logic Q&A agent"}</p>
         </div>
       </div>
 
       <button
         onClick={onSwitchToPortfolio}
-        className="text-[10px] text-zinc-400 hover:text-zinc-200 border border-dark-border bg-black px-2.5 py-1 rounded-none transition-colors cursor-pointer font-mono"
+        className="text-[12px] text-zinc-400 hover:text-zinc-200 border border-dark-border bg-black px-2.5 py-1 rounded-none transition-colors cursor-pointer font-mono"
       >
         Skip to portfolio &rarr;
       </button>

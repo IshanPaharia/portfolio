@@ -37,7 +37,7 @@ export default function MessageBubble({
 
         {/* Switch nudge after assistant responses */}
         {!isUser && msg.id !== "greeting" && (
-          <div className="mt-3 pt-2 border-t border-dark-border/40 flex items-center justify-between text-[11px] font-mono">
+          <div className="mt-3 pt-2 border-t border-dark-border/40 flex items-center justify-between text-[13px] font-mono">
             <span className="text-zinc-550">Looking for full layout?</span>
             <button
               onClick={onSwitchToPortfolio}

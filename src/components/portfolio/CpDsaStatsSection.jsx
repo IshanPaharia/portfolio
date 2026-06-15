@@ -49,7 +49,7 @@ export default function CpDsaStatsSection() {
           CP/DSA Stats
         </h2>
         {formattedUpdateDate && (
-          <div className="flex items-center gap-1.5 text-[11px] text-zinc-500 font-mono">
+          <div className="flex items-center gap-1.5 text-[13px] text-zinc-500 font-mono">
             <span className="relative flex h-1.5 w-1.5">
               <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
             </span>
@@ -67,7 +67,7 @@ export default function CpDsaStatsSection() {
                 <SiCodeforces className="w-5 h-5 text-[#B13F3F]" />
                 <span className="text-xs font-semibold font-mono">Codeforces</span>
               </div>
-              <span className="text-[10px] uppercase font-bold tracking-widest font-mono bg-zinc-900 border border-dark-border text-zinc-400 px-1.5 py-0.5 capitalize">
+              <span className="text-[12px] uppercase font-bold tracking-widest font-mono bg-zinc-900 border border-dark-border text-zinc-400 px-1.5 py-0.5 capitalize">
                 {data.codeforces.rank}
               </span>
             </div>
@@ -76,7 +76,7 @@ export default function CpDsaStatsSection() {
               href="https://codeforces.com/profile/DArkENDoom"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[12px] text-brand-cyan hover:underline mt-2.5 block font-mono"
+              className="text-[14px] text-brand-cyan hover:underline mt-2.5 block font-mono"
             >
               @DArkENDoom
             </a>
@@ -84,11 +84,11 @@ export default function CpDsaStatsSection() {
 
           <div className="border-t border-dark-border/40 pt-2 grid grid-cols-2 text-left font-mono">
             <div>
-              <span className="text-[10px] text-zinc-550 block">Rating</span>
+              <span className="text-[12px] text-zinc-550 block">Rating</span>
               <span className="text-xs font-bold text-zinc-200">{data.codeforces.currentRating}</span>
             </div>
             <div>
-              <span className="text-[10px] text-zinc-550 block">Max Rating</span>
+              <span className="text-[12px] text-zinc-550 block">Max Rating</span>
               <span className="text-xs font-bold text-zinc-350">{data.codeforces.maxRating}</span>
             </div>
           </div>
@@ -102,7 +102,7 @@ export default function CpDsaStatsSection() {
                 <SiCodechef className="w-5 h-5 text-[#5B4638]" />
                 <span className="text-xs font-semibold font-mono">CodeChef</span>
               </div>
-              <span className="text-[10px] uppercase font-bold tracking-widest font-mono bg-[#1E7D22]/10 border border-[#1E7D22]/20 text-[#emerald-450] px-1.5 py-0.5">
+              <span className="text-[12px] uppercase font-bold tracking-widest font-mono bg-[#1E7D22]/10 border border-[#1E7D22]/20 text-[#emerald-450] px-1.5 py-0.5">
                 {data.codechef.stars}
               </span>
             </div>
@@ -111,7 +111,7 @@ export default function CpDsaStatsSection() {
               href="https://www.codechef.com/users/darkendoom"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[12px] text-brand-cyan hover:underline mt-2.5 block font-mono"
+              className="text-[14px] text-brand-cyan hover:underline mt-2.5 block font-mono"
             >
               @darkendoom
             </a>
@@ -119,11 +119,11 @@ export default function CpDsaStatsSection() {
 
           <div className="border-t border-dark-border/40 pt-2 grid grid-cols-2 text-left font-mono">
             <div>
-              <span className="text-[10px] text-zinc-550 block">Rating</span>
+              <span className="text-[12px] text-zinc-550 block">Rating</span>
               <span className="text-xs font-bold text-zinc-200">{data.codechef.currentRating}</span>
             </div>
             <div>
-              <span className="text-[10px] text-zinc-550 block">Max Rating</span>
+              <span className="text-[12px] text-zinc-550 block">Max Rating</span>
               <span className="text-xs font-bold text-zinc-350">{data.codechef.maxRating}</span>
             </div>
           </div>
@@ -137,7 +137,7 @@ export default function CpDsaStatsSection() {
                 <SiLeetcode className="w-5 h-5 text-[#FFA116]" />
                 <span className="text-xs font-semibold font-mono">LeetCode</span>
               </div>
-              <span className="text-[10px] uppercase font-bold tracking-widest font-mono bg-[#FFA116]/10 border border-[#FFA116]/20 text-[#FFA116] px-1.5 py-0.5 capitalize">
+              <span className="text-[12px] uppercase font-bold tracking-widest font-mono bg-[#FFA116]/10 border border-[#FFA116]/20 text-[#FFA116] px-1.5 py-0.5 capitalize">
                 {data.leetcode.title}
               </span>
             </div>
@@ -146,7 +146,7 @@ export default function CpDsaStatsSection() {
               href="https://leetcode.com/DArkENDoom/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[12px] text-brand-cyan hover:underline mt-2.5 block font-mono"
+              className="text-[14px] text-brand-cyan hover:underline mt-2.5 block font-mono"
             >
               @DArkENDoom
             </a>
@@ -154,15 +154,15 @@ export default function CpDsaStatsSection() {
 
           <div className="border-t border-dark-border/40 pt-2 grid grid-cols-3 text-left font-mono">
             <div>
-              <span className="text-[10px] text-zinc-550 block">Solved</span>
+              <span className="text-[12px] text-zinc-550 block">Solved</span>
               <span className="text-xs font-bold text-zinc-200">{data.leetcode.solved}+</span>
             </div>
             <div>
-              <span className="text-[10px] text-zinc-550 block">Rating</span>
+              <span className="text-[12px] text-zinc-550 block">Rating</span>
               <span className="text-xs font-bold text-zinc-200">{data.leetcode.rating}</span>
             </div>
             <div>
-              <span className="text-[10px] text-zinc-550 block">Max Rating</span>
+              <span className="text-[12px] text-zinc-550 block">Max Rating</span>
               <span className="text-xs font-bold text-zinc-350">{data.leetcode.maxRating}</span>
             </div>
           </div>
