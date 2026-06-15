@@ -37,9 +37,9 @@ export default function ActivitySection({ stats }) {
 
         {/* Grid Container */}
         <div className="border border-dark-border bg-[#08080a] p-5 relative overflow-hidden">
-          <div className="text-[11px] text-zinc-400 font-mono mb-4 flex justify-between items-center">
+          <div className="text-[11px] text-zinc-400 font-mono mb-4 flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-center">
             <span>{stats.isLive ? "Live" : "Demo"} Activity Map (Last 12 Months)</span>
-            <div className="flex items-center gap-1.5 text-[10px] text-zinc-500">
+            <div className="flex items-center gap-1.5 text-[10px] text-zinc-500 self-start sm:self-auto">
               <span>Less</span>
               <span className="w-2.5 h-2.5 bg-zinc-900/60 border border-zinc-950 rounded-[1.5px]" title="No activity" />
               <span className="w-2.5 h-2.5 bg-emerald-500/15 border border-emerald-500/5 rounded-[1.5px]" title="Level 1" />
