@@ -40,7 +40,7 @@ export default function AboutSection() {
             <p className="text-xs text-zinc-400 leading-relaxed max-w-lg">
               {profileData.personal.headline}
             </p>
-            <span className="text-[12px] bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 px-2 py-0.5 rounded font-mono">
+            <span className="inline-block text-[12px] bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 px-2 py-0.5 rounded font-mono">
               {profileData.personal.status}
             </span>
           </div>

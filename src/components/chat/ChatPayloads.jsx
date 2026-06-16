@@ -57,11 +57,11 @@ export default function ChatPayloads({
           {profileData.stack.slice(0, 8).map((tech) => (
             <div 
               key={tech.name} 
-              className="flex items-center gap-2 p-2 border border-dark-border bg-black"
+              className="flex items-center gap-2 p-2 border border-dark-border bg-black min-w-0"
             >
-              <span className="w-1.5 h-1.5" style={{ backgroundColor: tech.color }} />
-              <span className="text-[14px] text-zinc-300 font-medium">{tech.name}</span>
-              <span className="text-[12px] text-zinc-550 ml-auto font-mono">{tech.category}</span>
+              <span className="w-1.5 h-1.5 shrink-0" style={{ backgroundColor: tech.color }} />
+              <span className="text-[14px] text-zinc-300 font-medium truncate">{tech.name}</span>
+              <span className="text-[12px] text-zinc-550 ml-auto font-mono hidden sm:inline shrink-0">{tech.category}</span>
             </div>
           ))}
           <div className="col-span-2 text-center mt-1">
