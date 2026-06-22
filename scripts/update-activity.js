@@ -5,6 +5,58 @@ const path = require("path");
 const targetDir = path.join(__dirname, "../src/data");
 const targetFile = path.join(targetDir, "live_calendar.json");
 
+// ==========================================
+// UTILITY: Retry wrapper with exponential backoff
+// ==========================================
+async function fetchWithRetry(url, options = {}, retries = 3, baseDelayMs = 1000) {
+  let lastError;
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      const res = await fetch(url, options);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res;
+    } catch (err) {
+      lastError = err;
+      if (attempt < retries) {
+        const delay = baseDelayMs * Math.pow(2, attempt - 1);
+        console.warn(`  Attempt ${attempt}/${retries} failed for ${url}: ${err.message}. Retrying in ${delay}ms...`);
+        await new Promise(r => setTimeout(r, delay));
+      }
+    }
+  }
+  throw lastError;
+}
+
+// ==========================================
+// UTILITY: Timezone-safe date string for Asia/Kolkata
+// ==========================================
+function getKolkataDateString(date = new Date()) {
+  // Use Intl.DateTimeFormat to get the correct date parts in Asia/Kolkata timezone
+  // This avoids the re-parsing bug with new Date(toLocaleString(...))
+  const formatter = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Kolkata",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  });
+  return formatter.format(date); // returns YYYY-MM-DD
+}
+
+function getKolkataDateParts(date = new Date()) {
+  const formatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Kolkata",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    weekday: "short"
+  });
+  const parts = {};
+  formatter.formatToParts(date).forEach(p => {
+    parts[p.type] = p.value;
+  });
+  return parts;
+}
+
 async function main() {
   console.log("Starting live activity calendar data aggregation...");
   
@@ -13,24 +65,33 @@ async function main() {
   const prevDaysMap = {};
   if (fs.existsSync(targetFile)) {
     try {
-      prevJson = JSON.parse(fs.readFileSync(targetFile, "utf-8"));
-      if (prevJson && prevJson.days) {
-        prevJson.days.forEach(day => {
-          prevDaysMap[day.date] = day;
-        });
-        console.log(`Loaded ${prevJson.days.length} days of previous calendar history to preserve state.`);
+      const rawContent = fs.readFileSync(targetFile, "utf-8");
+      
+      // Detect and warn about merge conflict markers
+      if (rawContent.includes("<<<<<<<") || rawContent.includes(">>>>>>>") || rawContent.includes("=======\n") || rawContent.includes("=======\r\n")) {
+        console.warn("⚠️ Previous live_calendar.json contains git merge conflict markers! Discarding corrupt file and starting fresh.");
+        prevJson = null;
+      } else {
+        prevJson = JSON.parse(rawContent);
+        if (prevJson && prevJson.days) {
+          prevJson.days.forEach(day => {
+            prevDaysMap[day.date] = day;
+          });
+          console.log(`Loaded ${prevJson.days.length} days of previous calendar history to preserve state.`);
+        }
       }
     } catch (e) {
       console.warn("Failed to parse previous live_calendar.json file:", e.message);
+      prevJson = null;
     }
   }
 
   // Define initial status block
   const status = {
-    github: prevJson?.status?.github || "PENDING",
-    leetcode: prevJson?.status?.leetcode || "PENDING",
-    codeforces: prevJson?.status?.codeforces || "PENDING",
-    codechef: prevJson?.status?.codechef || "PENDING"
+    github: "PENDING",
+    leetcode: "PENDING",
+    codeforces: "PENDING",
+    codechef: "PENDING"
   };
 
   // Define initial totals block (will be populated/scraped)
@@ -71,8 +132,7 @@ async function main() {
   // ==========================================
   try {
     console.log("Fetching GitHub contributions page...");
-    const res = await fetch("https://github.com/users/IshanPaharia/contributions");
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const res = await fetchWithRetry("https://github.com/users/IshanPaharia/contributions");
     const html = await res.text();
     
     // Map id -> date in an order-independent manner
@@ -156,12 +216,11 @@ async function main() {
       variables: { username: "DArkENDoom" }
     };
     
-    const res = await fetch("https://leetcode.com/graphql", {
+    const res = await fetchWithRetry("https://leetcode.com/graphql", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(query)
     });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const json = await res.json();
     if (json.errors) throw new Error(json.errors[0].message);
     
@@ -178,7 +237,8 @@ async function main() {
         const calendar = JSON.parse(calendarStr);
         Object.entries(calendar).forEach(([timestampSec, count]) => {
           const timestampMs = parseInt(timestampSec, 10) * 1000;
-          const dateStr = new Date(timestampMs).toLocaleDateString("sv-SE", { timeZone: "Asia/Kolkata" });
+          // Use timezone-safe date formatting
+          const dateStr = getKolkataDateString(new Date(timestampMs));
           leetcodeActivity[dateStr] = (leetcodeActivity[dateStr] || 0) + count;
         });
       }
@@ -225,8 +285,7 @@ async function main() {
   // ==========================================
   try {
     console.log("Fetching Codeforces submissions...");
-    const res = await fetch("https://codeforces.com/api/user.status?handle=DArkENDoom");
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const res = await fetchWithRetry("https://codeforces.com/api/user.status?handle=DArkENDoom");
     const json = await res.json();
     
     if (json && json.status === "OK" && json.result) {
@@ -236,7 +295,7 @@ async function main() {
       const solvedProblems = new Set();
       
       sortedSubmissions.forEach(sub => {
-        const dateStr = new Date(sub.creationTimeSeconds * 1000).toLocaleDateString("sv-SE", { timeZone: "Asia/Kolkata" });
+        const dateStr = getKolkataDateString(new Date(sub.creationTimeSeconds * 1000));
         codeforcesActivity[dateStr] = (codeforcesActivity[dateStr] || 0) + 1;
         
         if (sub.verdict === "OK") {
@@ -252,15 +311,13 @@ async function main() {
       // Fetch Codeforces rating/info statically
       try {
         console.log("Fetching Codeforces user info...");
-        const infoRes = await fetch("https://codeforces.com/api/user.info?handles=DArkENDoom");
-        if (infoRes.ok) {
-          const infoJson = await infoRes.json();
-          if (infoJson.status === "OK" && infoJson.result && infoJson.result.length > 0) {
-            const user = infoJson.result[0];
-            codeforcesRating = user.rating || codeforcesRating;
-            codeforcesMaxRating = user.maxRating || codeforcesMaxRating;
-            codeforcesRank = user.rank || codeforcesRank;
-          }
+        const infoRes = await fetchWithRetry("https://codeforces.com/api/user.info?handles=DArkENDoom");
+        const infoJson = await infoRes.json();
+        if (infoJson.status === "OK" && infoJson.result && infoJson.result.length > 0) {
+          const user = infoJson.result[0];
+          codeforcesRating = user.rating || codeforcesRating;
+          codeforcesMaxRating = user.maxRating || codeforcesMaxRating;
+          codeforcesRank = user.rank || codeforcesRank;
         }
       } catch (infoErr) {
         console.warn("CF user info fetch failed, using fallback:", infoErr.message);
@@ -289,12 +346,11 @@ async function main() {
   // ==========================================
   try {
     console.log("Fetching CodeChef profile page...");
-    const res = await fetch("https://www.codechef.com/users/darkendoom", {
+    const res = await fetchWithRetry("https://www.codechef.com/users/darkendoom", {
       headers: {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
       }
     });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const html = await res.text();
     
     // Scrape daily submissions
@@ -354,29 +410,46 @@ async function main() {
   }
 
   // ==========================================
+  // VALIDATION: Fail hard if ALL sources failed and no previous data exists
+  // ==========================================
+  if (failures.length === 4 && !prevJson) {
+    console.error("❌ FATAL: All 4 data sources failed and no previous data exists to fall back on. Aborting.");
+    process.exit(1);
+  }
+
+  // ==========================================
   // CONSOLIDATION AND SCHEMA COMPILATION
   // ==========================================
   // Generate a list of exactly 371 days ending today in Asia/Kolkata timezone
-  const kolkataTimeStr = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
-  const nowInKolkata = new Date(kolkataTimeStr);
+  // Use timezone-safe date computation throughout
+  const todayStr = getKolkataDateString();
+  const todayParts = getKolkataDateParts();
+  console.log(`Today in Asia/Kolkata: ${todayStr}`);
   
-  const endDate = new Date(nowInKolkata);
-  const startDate = new Date(nowInKolkata);
-  startDate.setDate(endDate.getDate() - 364);
-  const startDay = startDate.getDay(); // Sunday is 0
-  startDate.setDate(startDate.getDate() - startDay); // Align to Sunday
+  // Build dates using UTC to avoid DST/timezone issues in the loop
+  // Parse todayStr (YYYY-MM-DD) into a UTC-midnight date for deterministic iteration
+  const [todayY, todayM, todayD] = todayStr.split("-").map(Number);
+  const endDateUTC = Date.UTC(todayY, todayM - 1, todayD);
+  
+  // Go back 364 days, then align to Sunday
+  const startCandidateUTC = endDateUTC - 364 * 86400000;
+  const startCandidateDay = new Date(startCandidateUTC).getUTCDay(); // 0=Sunday
+  const startDateUTC = startCandidateUTC - startCandidateDay * 86400000;
+  
+  // Calculate how many days from startDate to endDate (inclusive)
+  const totalDays = Math.round((endDateUTC - startDateUTC) / 86400000) + 1;
   
   const days = [];
   let totalCommits = 0;
   let totalCpActivity = 0;
   let totalCpSolved = 0;
   
-  for (let i = 0; i < 371; i++) {
-    const d = new Date(startDate);
-    d.setDate(startDate.getDate() + i);
-    const yyyy = d.getFullYear();
-    const mm = String(d.getMonth() + 1).padStart(2, '0');
-    const dd = String(d.getDate()).padStart(2, '0');
+  for (let i = 0; i < totalDays; i++) {
+    const dayUTC = startDateUTC + i * 86400000;
+    const d = new Date(dayUTC);
+    const yyyy = d.getUTCFullYear();
+    const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
+    const dd = String(d.getUTCDate()).padStart(2, '0');
     const dateStr = `${yyyy}-${mm}-${dd}`;
     
     // Fetch values for this date
@@ -468,10 +541,16 @@ async function main() {
   }
   fs.writeFileSync(targetFile, JSON.stringify(output, null, 2), "utf-8");
   console.log(`Successfully wrote live calendar data to: ${targetFile}`);
+  console.log(`Date range: ${days[0]?.date} to ${days[days.length - 1]?.date} (${days.length} days)`);
   console.log(`Consolidated Totals -> Commits: ${totals.commits}, CP Solved: ${totals.cpSolved}, CP Activity: ${totals.cpActivity}`);
   
   if (failures.length > 0) {
     console.warn("\n⚠️ Script completed with failures:\n - " + failures.join("\n - "));
+    // Exit with error if ALL sources failed (data is fully stale)
+    if (failures.length === 4) {
+      console.error("❌ All data sources failed. Output is based entirely on previous/fallback data.");
+      process.exit(1);
+    }
   } else {
     console.log("\n✓ Script completed successfully with all sources updated!");
   }

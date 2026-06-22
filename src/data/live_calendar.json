@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-  "updatedAt": "2026-06-16T01:42:40.787+05:30",
-=======
-  "updatedAt": "2026-06-16T21:55:24.532+05:30",
->>>>>>> f3650be33e8de1bb139d8772b6f354fca2290aa5
+  "updatedAt": "2026-06-22T11:11:47.724+05:30",
   "timezone": "Asia/Kolkata",
   "status": {
     "github": "OK",
@@ -12,137 +8,32 @@
     "codechef": "OK"
   },
   "totals": {
-    "commits": 171,
-    "cpSolved": 589,
-    "cpActivity": 285,
-    "leetcodeSolvedTotal": 219,
-    "codechefSolvedTotal": 53,
-    "codeforcesSolvedTotal": 317
+    "commits": 179,
+    "cpSolved": 605,
+    "cpActivity": 289,
+    "leetcodeSolvedTotal": 229,
+    "codechefSolvedTotal": 56,
+    "codeforcesSolvedTotal": 320
   },
   "cpStats": {
     "codeforces": {
-      "currentRating": 1336,
+      "currentRating": 1306,
       "maxRating": 1465,
       "rank": "pupil"
     },
     "codechef": {
-      "currentRating": 1681,
+      "currentRating": 1660,
       "maxRating": 1746,
       "stars": "3★"
     },
     "leetcode": {
-      "solved": 219,
+      "solved": 229,
       "rating": 1853,
       "maxRating": 1853,
       "title": "Knight"
     }
   },
   "days": [
-    {
-      "date": "2025-06-15",
-      "github": 0,
-      "leetcodeActivity": 0,
-      "leetcodeSolved": 0,
-      "codeforcesActivity": 6,
-      "codeforcesSolved": 2,
-      "codechefActivity": 0,
-      "codechefSolved": 0,
-      "commits": 0,
-      "cpActivity": 6,
-      "cpSolved": 2,
-      "totalActivity": 6,
-      "level": 3
-    },
-    {
-      "date": "2025-06-16",
-      "github": 0,
-      "leetcodeActivity": 0,
-      "leetcodeSolved": 0,
-      "codeforcesActivity": 0,
-      "codeforcesSolved": 0,
-      "codechefActivity": 0,
-      "codechefSolved": 0,
-      "commits": 0,
-      "cpActivity": 0,
-      "cpSolved": 0,
-      "totalActivity": 0,
-      "level": 0
-    },
-    {
-      "date": "2025-06-17",
-      "github": 0,
-      "leetcodeActivity": 0,
-      "leetcodeSolved": 0,
-      "codeforcesActivity": 5,
-      "codeforcesSolved": 4,
-      "codechefActivity": 0,
-      "codechefSolved": 0,
-      "commits": 0,
-      "cpActivity": 5,
-      "cpSolved": 4,
-      "totalActivity": 5,
-      "level": 2
-    },
-    {
-      "date": "2025-06-18",
-      "github": 0,
-      "leetcodeActivity": 0,
-      "leetcodeSolved": 0,
-      "codeforcesActivity": 0,
-      "codeforcesSolved": 0,
-      "codechefActivity": 7,
-      "codechefSolved": 0,
-      "commits": 0,
-      "cpActivity": 7,
-      "cpSolved": 0,
-      "totalActivity": 7,
-      "level": 3
-    },
-    {
-      "date": "2025-06-19",
-      "github": 0,
-      "leetcodeActivity": 0,
-      "leetcodeSolved": 0,
-      "codeforcesActivity": 0,
-      "codeforcesSolved": 0,
-      "codechefActivity": 0,
-      "codechefSolved": 0,
-      "commits": 0,
-      "cpActivity": 0,
-      "cpSolved": 0,
-      "totalActivity": 0,
-      "level": 0
-    },
-    {
-      "date": "2025-06-20",
-      "github": 0,
-      "leetcodeActivity": 0,
-      "leetcodeSolved": 0,
-      "codeforcesActivity": 0,
-      "codeforcesSolved": 0,
-      "codechefActivity": 0,
-      "codechefSolved": 0,
-      "commits": 0,
-      "cpActivity": 0,
-      "cpSolved": 0,
-      "totalActivity": 0,
-      "level": 0
-    },
-    {
-      "date": "2025-06-21",
-      "github": 0,
-      "leetcodeActivity": 0,
-      "leetcodeSolved": 0,
-      "codeforcesActivity": 5,
-      "codeforcesSolved": 3,
-      "codechefActivity": 0,
-      "codechefSolved": 0,
-      "commits": 0,
-      "cpActivity": 5,
-      "cpSolved": 3,
-      "totalActivity": 5,
-      "level": 2
-    },
     {
       "date": "2025-06-22",
       "github": 0,
@@ -5530,48 +5421,48 @@
     },
     {
       "date": "2026-06-16",
-      "github": 2,
-      "leetcodeActivity": 4,
+      "github": 3,
+      "leetcodeActivity": 5,
       "leetcodeSolved": 0,
       "codeforcesActivity": 0,
       "codeforcesSolved": 0,
       "codechefActivity": 7,
       "codechefSolved": 0,
-      "commits": 2,
-      "cpActivity": 11,
+      "commits": 3,
+      "cpActivity": 12,
       "cpSolved": 0,
-      "totalActivity": 13,
+      "totalActivity": 15,
       "level": 4
     },
     {
       "date": "2026-06-17",
-      "github": 0,
+      "github": 5,
       "leetcodeActivity": 0,
       "leetcodeSolved": 0,
       "codeforcesActivity": 0,
       "codeforcesSolved": 0,
-      "codechefActivity": 0,
+      "codechefActivity": 3,
       "codechefSolved": 0,
-      "commits": 0,
-      "cpActivity": 0,
+      "commits": 5,
+      "cpActivity": 3,
       "cpSolved": 0,
-      "totalActivity": 0,
-      "level": 0
+      "totalActivity": 8,
+      "level": 3
     },
     {
       "date": "2026-06-18",
       "github": 0,
-      "leetcodeActivity": 0,
+      "leetcodeActivity": 2,
       "leetcodeSolved": 0,
-      "codeforcesActivity": 0,
-      "codeforcesSolved": 0,
+      "codeforcesActivity": 5,
+      "codeforcesSolved": 3,
       "codechefActivity": 0,
       "codechefSolved": 0,
       "commits": 0,
-      "cpActivity": 0,
-      "cpSolved": 0,
-      "totalActivity": 0,
-      "level": 0
+      "cpActivity": 7,
+      "cpSolved": 3,
+      "totalActivity": 7,
+      "level": 3
     },
     {
       "date": "2026-06-19",
@@ -5591,17 +5482,47 @@
     {
       "date": "2026-06-20",
       "github": 0,
-      "leetcodeActivity": 0,
+      "leetcodeActivity": 7,
       "leetcodeSolved": 0,
       "codeforcesActivity": 0,
       "codeforcesSolved": 0,
       "codechefActivity": 0,
       "codechefSolved": 0,
       "commits": 0,
-      "cpActivity": 0,
+      "cpActivity": 7,
       "cpSolved": 0,
-      "totalActivity": 0,
-      "level": 0
+      "totalActivity": 7,
+      "level": 3
+    },
+    {
+      "date": "2026-06-21",
+      "github": 2,
+      "leetcodeActivity": 8,
+      "leetcodeSolved": 0,
+      "codeforcesActivity": 0,
+      "codeforcesSolved": 0,
+      "codechefActivity": 0,
+      "codechefSolved": 0,
+      "commits": 2,
+      "cpActivity": 8,
+      "cpSolved": 0,
+      "totalActivity": 10,
+      "level": 4
+    },
+    {
+      "date": "2026-06-22",
+      "github": 0,
+      "leetcodeActivity": 1,
+      "leetcodeSolved": 0,
+      "codeforcesActivity": 0,
+      "codeforcesSolved": 0,
+      "codechefActivity": 0,
+      "codechefSolved": 0,
+      "commits": 0,
+      "cpActivity": 1,
+      "cpSolved": 0,
+      "totalActivity": 1,
+      "level": 1
     }
   ]
 }
