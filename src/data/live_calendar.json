@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-25T14:54:19.547+05:30",
+  "updatedAt": "2026-06-25T20:05:31.382+05:30",
   "timezone": "Asia/Kolkata",
   "status": {
     "github": "OK",
@@ -17,8 +17,8 @@
   },
   "cpStats": {
     "codeforces": {
-      "currentRating": 1306,
-      "maxRating": 1465,
+      "currentRating": 1309,
+      "maxRating": 1468,
       "rank": "pupil"
     },
     "codechef": {
