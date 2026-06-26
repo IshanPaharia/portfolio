@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-26T09:20:59.851+05:30",
+  "updatedAt": "2026-06-26T14:59:32.882+05:30",
   "timezone": "Asia/Kolkata",
   "status": {
     "github": "OK",
@@ -28,8 +28,8 @@
     },
     "leetcode": {
       "solved": 236,
-      "rating": 1853,
-      "maxRating": 1853,
+      "rating": 1878,
+      "maxRating": 1878,
       "title": "Knight"
     }
   },
