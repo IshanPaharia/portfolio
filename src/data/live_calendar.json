@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-15T08:02:10.180+05:30",
+  "updatedAt": "2026-07-15T13:42:08.355+05:30",
   "timezone": "Asia/Kolkata",
   "status": {
     "github": "OK",
@@ -9,11 +9,11 @@
   },
   "totals": {
     "commits": 183,
-    "cpSolved": 668,
+    "cpSolved": 666,
     "cpActivity": 391,
     "leetcodeSolvedTotal": 253,
     "codechefSolvedTotal": 83,
-    "codeforcesSolvedTotal": 332
+    "codeforcesSolvedTotal": 330
   },
   "cpStats": {
     "codeforces": {
@@ -5530,12 +5530,12 @@
       "leetcodeActivity": 0,
       "leetcodeSolved": 0,
       "codeforcesActivity": 8,
-      "codeforcesSolved": 4,
+      "codeforcesSolved": 2,
       "codechefActivity": 0,
       "codechefSolved": 0,
       "commits": 0,
       "cpActivity": 8,
-      "cpSolved": 4,
+      "cpSolved": 2,
       "totalActivity": 8,
       "level": 3
     },
