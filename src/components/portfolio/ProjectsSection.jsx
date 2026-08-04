@@ -1,5 +1,6 @@
 import profileData from "@/data/profile.json";
 import { LuExternalLink, LuChevronDown, LuChevronUp } from "react-icons/lu";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function ProjectsSection({ expandedProject, toggleProject }) {
   return (
@@ -27,7 +28,6 @@ export default function ProjectsSection({ expandedProject, toggleProject }) {
                     <h3 className="text-xs font-semibold text-zinc-200 group-hover:text-white transition-colors">
                       {proj.title}
                     </h3>
-                    <span className="text-[13px] text-zinc-600 font-mono mt-0.5 block">{proj.year}</span>
                   </div>
                 </div>
 
@@ -52,27 +52,79 @@ export default function ProjectsSection({ expandedProject, toggleProject }) {
                 </div>
               </button>
 
-              {/* Collapsible details */}
-              {isExpanded && (
-                <div className="px-4 pb-5 pt-2 bg-black/60 border-t border-dark-border/40 text-xs text-zinc-400 space-y-4">
-                  <p className="leading-relaxed">{proj.description}</p>
-                  <ul className="list-disc pl-4 space-y-2 text-[14px] text-zinc-400">
-                    {proj.details.map((detail, index) => (
-                      <li key={index} className="leading-relaxed">{detail}</li>
-                    ))}
-                  </ul>
-                  <div className="flex flex-wrap gap-1.5 pt-1">
-                    {proj.tech.map((t) => (
-                      <span 
-                        key={t} 
-                        className="text-[13px] bg-black border border-dark-border text-zinc-400 px-2 py-0.5 font-mono"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
+              {/* Collapsible details with smooth animation */}
+              <AnimatePresence initial={false}>
+                {isExpanded && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-4 pb-5 pt-2 bg-black/60 border-t border-dark-border/40 text-xs text-zinc-400 space-y-4">
+                      {/* Project Mockup Image */}
+                      {proj.image && (
+                        <div className="overflow-hidden rounded-xl border border-dark-border/80 bg-black/40 my-2">
+                          <img 
+                            src={proj.image} 
+                            alt={proj.title} 
+                            className="w-full h-auto object-cover"
+                          />
+                        </div>
+                      )}
+
+                      <p className="leading-relaxed">{proj.description}</p>
+                      
+                      {proj.details && proj.details.length > 0 && (
+                        <ul className="list-disc pl-4 space-y-2 text-[14px] text-zinc-400">
+                          {proj.details.map((detail, index) => (
+                            <li key={index} className="leading-relaxed">{detail}</li>
+                          ))}
+                        </ul>
+                      )}
+
+                      {/* Action Links */}
+                      {(proj.link || proj.github) && (
+                        <div className="flex flex-wrap items-center gap-2 pt-1">
+                          {proj.link && (
+                            <a
+                              href={proj.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="px-3 py-1 bg-[#121215] hover:bg-[#1c1c21] border border-dark-border rounded-md text-[13px] font-medium text-white transition-all flex items-center gap-1.5"
+                            >
+                              Live Demo
+                            </a>
+                          )}
+                          {proj.github && (
+                            <a
+                              href={proj.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="px-3 py-1 bg-[#121215] hover:bg-[#1c1c21] border border-dark-border rounded-md text-[13px] font-medium text-zinc-300 hover:text-white transition-all flex items-center gap-1.5"
+                            >
+                              Open Source
+                            </a>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Tech stack pills */}
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {proj.tech.map((t) => (
+                          <span 
+                            key={t} 
+                            className="text-[13px] bg-black border border-dark-border text-zinc-400 px-2 py-0.5 font-mono"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           );
         })}

@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
-html {
-  font-size: 19px !important;
+html, body {
+  font-size: 22px !important;
+  scroll-behavior: smooth !important;
 }
 
 @theme {

@@ -44,15 +44,53 @@ export default function Home() {
     setMobileMenuOpen(false);
   };
 
-  // Scroll and Navigate Bindings:
-  // Clicking nav links transitions views and scrolls.
+  const smoothScrollTo = (targetY, duration = 600) => {
+    const startY = window.scrollY || window.pageYOffset;
+    const distance = targetY - startY;
+    if (Math.abs(distance) < 2) return;
+    
+    let startTime = null;
+
+    const easeInOutCubic = (t) => 
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+    const step = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const easedProgress = easeInOutCubic(progress);
+      
+      window.scrollTo(0, startY + distance * easedProgress);
+
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+
+    window.requestAnimationFrame(step);
+  };
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (!element) return;
+    const headerOffset = 70;
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    smoothScrollTo(Math.max(0, offsetPosition), 600);
+  };
+
   const handleNavClick = (sectionId, projectId) => {
-    setMode("portfolio");
     setActiveSection(sectionId);
-    setPendingScrollTarget(sectionId);
     setMobileMenuOpen(false);
     if (projectId) {
       setInitialExpandedProject(projectId);
+    }
+
+    if (mode === "portfolio") {
+      scrollToSection(sectionId);
+    } else {
+      setMode("portfolio");
+      setPendingScrollTarget(sectionId);
     }
   };
 
@@ -60,11 +98,9 @@ export default function Home() {
     if (mode !== "portfolio" || !pendingScrollTarget) return;
 
     const timer = setTimeout(() => {
-      const element = document.getElementById(pendingScrollTarget);
-      if (!element) return;
-      element.scrollIntoView({ behavior: "smooth" });
+      scrollToSection(pendingScrollTarget);
       setPendingScrollTarget("");
-    }, 350);
+    }, 250);
 
     return () => clearTimeout(timer);
   }, [mode, pendingScrollTarget]);
@@ -141,23 +177,30 @@ export default function Home() {
 
             {/* Right Side: Switcher + Mobile Hamburger Menu */}
             <div className="flex items-center gap-2.5 shrink-0">
-              <div className="flex bg-[#0c0c0e] p-0.5 rounded-full border border-dark-border shrink-0">
+              <div className="relative flex bg-[#0c0c0e] p-0.5 rounded-full border border-dark-border shrink-0 w-[148px]">
+                {/* Smooth horizontal sliding background pill */}
+                <div 
+                  className={`absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] bg-[#18181b] rounded-full transition-transform duration-300 ease-out pointer-events-none z-0 ${
+                    mode === "portfolio" ? "translate-x-[calc(100%+2px)]" : "translate-x-0"
+                  }`}
+                />
+
                 <button
                   onClick={() => handleModeChange("chat")}
-                  className={`text-[12px] font-sans font-medium px-2.5 py-1 rounded-full transition-all duration-300 cursor-pointer ${
+                  className={`relative z-10 text-[12px] font-sans font-medium py-1 rounded-full transition-colors duration-200 cursor-pointer w-1/2 text-center ${
                     mode === "chat"
-                      ? "bg-[#18181b] text-brand-cyan font-semibold"
-                      : "text-zinc-500 hover:text-zinc-350"
+                      ? "text-brand-cyan font-semibold"
+                      : "text-zinc-500 hover:text-zinc-300"
                   }`}
                 >
                   Chat
                 </button>
                 <button
                   onClick={() => handleModeChange("portfolio")}
-                  className={`text-[12px] font-sans font-medium px-2.5 py-1 rounded-full transition-all duration-300 cursor-pointer ${
+                  className={`relative z-10 text-[12px] font-sans font-medium py-1 rounded-full transition-colors duration-200 cursor-pointer w-1/2 text-center ${
                     mode === "portfolio"
-                      ? "bg-[#18181b] text-white font-semibold"
-                      : "text-zinc-500 hover:text-zinc-355"
+                      ? "text-white font-semibold"
+                      : "text-zinc-500 hover:text-zinc-300"
                   }`}
                 >
                   Portfolio

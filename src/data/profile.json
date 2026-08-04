@@ -6,6 +6,7 @@
     "status": "Open to internships & full-time opportunities",
     "headline": "I architect resilient backend systems and pair them with clean, functional frontends.",
     "email": "ishanpaharia@gmail.com",
+    "photo": "/avatar.jpeg",
     "avatar": "/avatar.jpeg",
     "resume": "/resume.pdf",
     "socials": {
@@ -17,36 +18,41 @@
   "about": [
     "I'm a final-year Computer Science student at The LNM Institute of Information Technology, Jaipur (2023 - 2027), with a strong focus on backend engineering and systems design, and a growing comfort with shipping polished frontends to match.",
     "My work centers on building resilient, real-time systems: horizontally-scaled WebSocket infrastructure, Redis-backed caching pipelines, and transactional database flows that stay consistent under concurrent load.",
-    "I've shipped full-stack products end-to-end, from Pixnette, a real-time collaborative pixel canvas, to CoursessionAI, an AI-powered platform that turns YouTube playlists into structured courses with quizzes and a context-aware tutor. Outside of building, I spend a lot of time on competitive programming."
+    "I've shipped full-stack products end-to-end, from Pixnette (a real-time collaborative pixel canvas) and CoursessionAI (an AI learning platform), to DFilesS (a fault-tolerant distributed file storage system). Outside of building, I spend a lot of time on competitive programming."
   ],
   "projects": [
     {
       "id": "pixnette",
       "title": "Pixnette",
-      "year": "2026",
-      "description": "Real-time collaborative pixel canvas with horizontally-scaled WebSocket infrastructure.",
-      "details": [
-        "Engineered horizontal scaling across 2 Node.js instances behind an Nginx round-robin reverse proxy, sustaining 300 concurrent WebSocket connections on a self-hosted VPS.",
-        "Built a Redis write-back pipeline with an ordered event queue, atomic RENAME flush locking, and timestamp-guarded UPSERTs to guarantee canvas consistency and full timelapse history across bulk PostgreSQL flushes.",
-        "Synchronized multi-instance Socket.io state via the @socket.io/redis-adapter Pub/Sub and a binary Redis canvas buffer using SETRANGE/GET for O(1) per-pixel read/write.",
-        "Hardened deployment with Redis TTL cooldowns, UUID/IP-UA fingerprinting, Nginx rate limits on WebSocket and API routes, and GitHub Actions CI/CD."
-      ],
+      "year": "2026 — ∞",
+      "image": "/projects/pixnette.png",
       "link": "https://www.pixnette.site/",
+      "github": "https://github.com/IshanPaharia/pixnette",
+      "description": "I designed and built Pixnette, a real-time collaborative pixel canvas platform with horizontally-scaled WebSocket infrastructure.",
+      "details": [],
       "tech": ["React", "Tailwind CSS", "Node.js", "Express", "PostgreSQL", "Socket.io", "Redis", "Docker", "Nginx"]
     },
     {
       "id": "coursessionai",
       "title": "CoursessionAI",
-      "year": "2025",
-      "description": "AI learning platform that converts YouTube playlists into structured courses with summaries, quizzes, and an AI tutor.",
-      "details": [
-        "Built a full-stack platform that converts any YouTube playlist into a structured course with AI-generated module hierarchies, per-video summaries, quizzes, and a context-aware AI tutor.",
-        "Engineered an atomic playlist ingestion pipeline using Neon's WebSocket client for multi-step transactional DB writes, eliminating partial-state corruption across course, module, and video inserts.",
-        "Implemented layered access control, Clerk JWT verification, user-level course ownership, and resource-level integrity checks, securing all progress, notes, bookmark, and AI endpoints.",
-        "Deployed on Vercel with rate-limited APIs, Svix webhook verification via raw body capture, and XSS-sanitized completion certificate generation."
-      ],
+      "year": "2025 — ∞",
+      "image": "/projects/coursessionai.png",
       "link": "https://www.coursessionai.site/",
-      "tech": ["React", "Tailwind CSS", "Node.js", "Express", "PostgreSQL", "Clerk"]
+      "github": "https://github.com/IshanPaharia/coursessionai",
+      "description": "I designed and built CoursessionAI, an AI learning platform that converts YouTube playlists into structured courses with summaries, quizzes, and an AI tutor.",
+      "details": [],
+      "tech": ["React", "TypeScript", "Vite", "Tailwind CSS", "Node.js", "Express", "PostgreSQL", "Clerk"]
+    },
+    {
+      "id": "dfiless",
+      "title": "DFilesS",
+      "year": "2026 — ∞",
+      "image": "/projects/dfiless.png",
+      "link": "https://dfiless.site",
+      "github": "https://github.com/IshanPaharia/dfiless",
+      "description": "I designed and built DFilesS, a distributed file storage system that splits files into checksummed 4 MB chunks replicated across 3 storage nodes with a 2-of-3 write quorum for fault-tolerant persistence.",
+      "details": [],
+      "tech": ["React", "Tailwind CSS", "TypeScript", "Node.js", "Fastify", "PostgreSQL", "Docker"]
     }
   ],
   "_experience_note": "Note: When you add experience items to the 'experience' array, please also update the 'chatDatabase' array below (specifically under trigger: experience/job/internship/career) so that the AI Chat assistant responds with the updated details.",
@@ -62,6 +68,7 @@
     { "name": "Tailwind CSS", "category": "Frontend", "icon": "SiTailwindcss", "color": "#06B6D4" },
     { "name": "Node.js", "category": "Backend", "icon": "SiNodedotjs", "color": "#339933" },
     { "name": "Express.js", "category": "Backend", "icon": "SiExpress", "color": "#FFFFFF" },
+    { "name": "Fastify", "category": "Backend", "icon": "SiFastify", "color": "#000000" },
     { "name": "Django", "category": "Backend", "icon": "SiDjango", "color": "#092E20" },
     { "name": "FastAPI", "category": "Backend", "icon": "SiFastapi", "color": "#009688" },
     { "name": "PostgreSQL", "category": "Database", "icon": "SiPostgresql", "color": "#4169E1" },
@@ -84,15 +91,15 @@
       "answer": "I'm Ishan Paharia, a final-year Computer Science student at The LNM Institute of Information Technology, Jaipur, and a full-stack developer."
     },
     {
-      "triggers": ["projects", "work", "portfolio", "build", "show me your projects", "apps"],
+      "triggers": ["projects", "work", "portfolio", "build", "show me your projects", "apps", "dfiless"],
       "question": "Show me your projects",
-      "answer": "Here are some of the systems I've built, real-time and AI-powered platforms with a strong backend foundation.",
+      "answer": "Here are some of the systems I've built, real-time, fault-tolerant distributed storage, and AI-powered platforms with a strong backend foundation.",
       "action": "RENDER_PROJECTS"
     },
     {
-      "triggers": ["skills", "tech", "technologies", "stack", "what do you know", "languages"],
+      "triggers": ["skills", "tech", "technologies", "stack", "what do you know", "languages", "fastify"],
       "question": "What is your tech stack?",
-      "answer": "I work across the stack, with particular strength on the backend (Node.js, Express, Django, FastAPI, PostgreSQL, MongoDB, Redis), plus React and Next.js on the frontend.",
+      "answer": "I work across the stack, with particular strength on the backend (Node.js, Express, Fastify, Django, FastAPI, PostgreSQL, MongoDB, Redis), plus React and Next.js on the frontend.",
       "action": "RENDER_STACK"
     },
     {

@@ -15,7 +15,7 @@ export default function AboutSection() {
           {/* Rounded Square avatar in a sharp border box */}
           <div className="relative shrink-0">
             <Image 
-              src={profileData.personal.avatar} 
+              src={profileData.personal.photo || profileData.personal.avatar} 
               alt={profileData.personal.name} 
               className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl object-cover border border-dark-border"
               width={128}
