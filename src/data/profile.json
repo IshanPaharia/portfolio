@@ -48,7 +48,7 @@
       "title": "DFilesS",
       "year": "2026 — ∞",
       "image": "/projects/dfiless.png",
-      "link": "https://dfiless.site",
+      "link": "https://dfiless.vercel.app/",
       "github": "https://github.com/IshanPaharia/dfiless",
       "description": "I designed and built DFilesS, a distributed file storage system that splits files into checksummed 4 MB chunks replicated across 3 storage nodes with a 2-of-3 write quorum for fault-tolerant persistence.",
       "details": [],
