@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-12T07:29:43.521+05:30",
+  "updatedAt": "2026-08-12T12:55:26.030+05:30",
   "timezone": "Asia/Kolkata",
   "status": {
     "github": "OK",
@@ -9,9 +9,9 @@
   },
   "totals": {
     "commits": 206,
-    "cpSolved": 689,
-    "cpActivity": 400,
-    "leetcodeSolvedTotal": 264,
+    "cpSolved": 693,
+    "cpActivity": 407,
+    "leetcodeSolvedTotal": 268,
     "codechefSolvedTotal": 92,
     "codeforcesSolvedTotal": 333
   },
@@ -27,7 +27,7 @@
       "stars": "3★"
     },
     "leetcode": {
-      "solved": 264,
+      "solved": 268,
       "rating": 1920,
       "maxRating": 1920,
       "title": "Knight"
@@ -5542,17 +5542,17 @@
     {
       "date": "2026-08-12",
       "github": 0,
-      "leetcodeActivity": 0,
+      "leetcodeActivity": 7,
       "leetcodeSolved": 0,
       "codeforcesActivity": 0,
       "codeforcesSolved": 0,
       "codechefActivity": 0,
       "codechefSolved": 0,
       "commits": 0,
-      "cpActivity": 0,
+      "cpActivity": 7,
       "cpSolved": 0,
-      "totalActivity": 0,
-      "level": 0
+      "totalActivity": 7,
+      "level": 3
     }
   ]
 }
